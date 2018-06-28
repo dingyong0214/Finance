@@ -1,0 +1,40 @@
+@charset "utf-8";
+@mixin border-1px($color) {
+    position: relative;
+    &::after {
+        content: ' ';
+        position: absolute;
+        right: 0;
+        bottom: -1px;
+        left: 0;
+        height: 1px;
+        border-top: 1px solid $color;
+    }
+}
+
+@mixin border-none() {
+    &::after {
+        display: none;
+        content: ' ';
+    }
+}
+
+@mixin border-box-1px($color,$radius) {
+    position: relative;
+    &::before {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        border: 1px solid $color;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: scale(0.5, 0.5);
+        transform: scale(0.5, 0.5);
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        left: 0;
+        top: 0;
+        border-radius: $radius;
+    }
+}
